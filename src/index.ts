@@ -41,15 +41,15 @@ class BadwordFilter {
     return this._exclude;
   }
 
-  public set exclude(exclude: string[]) {
-    this._exclude = [...this._exclude, ...exclude];
+  private set exclude(exclude: string[]) {
+    this._exclude = [...this._exclude, ...exclude.map((word) => word.toLowerCase())];
   }
 
   public get list() {
     return this._list;
   }
 
-  public set list(list: string[]) {
+  private set list(list: string[]) {
     if (this.emptyList) {
       this._list = [...list];
     } else {
@@ -164,7 +164,7 @@ class BadwordFilter {
 
     const list = wordBankLoader(dirInfo);
 
-    this.list = list;
+    this.addWords(...list);
   }
 }
 

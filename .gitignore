@@ -102,4 +102,6 @@ dist
 
 # TernJS port file
 .tern-port
+
 badwords-ts.settings.json
+!src/test/badwords-ts.settings.json
